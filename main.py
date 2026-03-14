@@ -1,15 +1,10 @@
 from fastapi import FastAPI, HTTPException
 import requests
-import json
+from apis import ULTIMATE_APIS
 
 app = FastAPI()
 
-API_KEY = "SEMY"
-
-with open("semy.json") as f:
-    config = json.load(f)
-
-APIS = config["apis"]
+API_KEY = "SEMY123"
 
 
 @app.get("/api/semy")
@@ -22,13 +17,15 @@ def semy(key: str, number: str):
 
     try:
 
-        for api in APIS:
+        for api in ULTIMATE_APIS:
+
+            payload = api["data"](number)
 
             r = requests.request(
                 method=api["method"],
                 url=api["url"],
                 headers=api["headers"],
-                json={"number": number}
+                data=payload
             )
 
             responses.append({
@@ -39,7 +36,7 @@ def semy(key: str, number: str):
         return {
             "success": True,
             "number": number,
-            "total": len(APIS),
+            "total": len(ULTIMATE_APIS),
             "responses": responses
         }
 
